@@ -6,7 +6,7 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 19:56:07 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/04/24 17:18:10 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/04/24 18:02:15 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int		get_next_line(const int fd, char **line)
 {
 	int				ret;
-	char 			*tmp;
+	char			*tmp;
 	char			buf[BUFF_SIZE + 1];
 	int				c;
 	static char		*rest;
