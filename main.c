@@ -1,6 +1,5 @@
 #include "get_next_line.h"
-#include "libft/libft.h"
-
+#include "libft/libft.h" 
 int main(int argc, char **argv)
 {
 	int		fd;

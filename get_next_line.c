@@ -6,7 +6,7 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 19:56:07 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/04/15 21:19:23 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/04/24 17:18:10 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int		get_next_line(const int fd, char **line)
 		rest = ft_strdup("");
 	if (fd < 0 || !line)
 		return (-1);
-//	ret = 0;
 	while (!(ft_strchr(rest, '\n')) && ((ret = read(fd, buf, BUFF_SIZE)) > 0))
 	{
 		buf[ret] = '\0';
@@ -34,7 +33,7 @@ int		get_next_line(const int fd, char **line)
 	}
 	if (ret == -1)
 	{
-		free(rest);
+		ft_strclr(rest);
 		return (-1);
 	}
 	while (rest[c] && rest[c] != '\n')
