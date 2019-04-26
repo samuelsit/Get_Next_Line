@@ -13,7 +13,7 @@
 #include "libft/libft.h"
 #include "get_next_line.h"
 
-char		*start(char *rest)
+char		*start_line(char *rest)
 {
 	if (!rest)
 		rest = ft_strdup("");
