@@ -13,12 +13,11 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdio.h>
-# include <unistd.h>
+# include <limits.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# define BUFF_SIZE 1
+# define BUFF_SIZE 256
 
 int		get_next_line(const int fd, char **line);
 

@@ -53,23 +53,23 @@ int		get_next_line(const int fd, char **line)
 {
 	int		ret;
 	char		buf[BUFF_SIZE + 1];
-	static char	*rest;
+	static char	*rest[OPEN_MAX];
 
-	rest = start_line(rest);
-	if (fd < 0 || !line)
+	if (fd < 0 || fd > OPEN_MAX || !line)
 		return (-1);
-	while (!(ft_strchr(rest, '\n')) && ((ret = read(fd, buf, BUFF_SIZE)) > 0))
+	rest[fd] = start_line(rest[fd]);
+	while (!(ft_strchr(rest[fd], '\n')) && ((ret = read(fd, buf, BUFF_SIZE)) > 0))
 	{
 		buf[ret] = '\0';
-		rest = ft_strjoin_free(rest, buf, 1);
+		rest[fd] = ft_strjoin_free(rest[fd], buf, 1);
 	}
 	if (ret == -1)
 	{
-		ft_strclr(rest);
+		ft_strclr(rest[fd]);
 		return (-1);
 	}
-	(*line) = ft_strsub(rest, 0, len_line(rest));
-	rest = free_line(rest);
+	(*line) = ft_strsub(rest[fd], 0, len_line(rest[fd]));
+	rest[fd] = free_line(rest[fd]);
 	if (len_line(*line))
 		return (1);
 	return (ret > 0 ? 1 : 0);
