@@ -6,14 +6,13 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 19:56:07 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/04/24 18:02:15 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/05/07 15:12:17 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "get_next_line.h"
 
-char		*start_line(char *rest)
+char	*start_line(char *rest)
 {
 	if (!rest)
 		rest = ft_strdup("");
@@ -30,7 +29,7 @@ int		len_line(char *str)
 	return (i);
 }
 
-char		*new_line(char *rest)
+char	*new_line(char *rest)
 {
 	if (rest[len_line(rest)] == '\n')
 		rest = ft_strdup(&rest[len_line(rest) + 1]);
@@ -39,7 +38,7 @@ char		*new_line(char *rest)
 	return (rest);
 }
 
-char		*free_line(char *rest)
+char	*free_line(char *rest)
 {
 	char	*tmp;
 
@@ -51,14 +50,15 @@ char		*free_line(char *rest)
 
 int		get_next_line(const int fd, char **line)
 {
-	int		ret;
+	int			ret;
 	char		buf[BUFF_SIZE + 1];
 	static char	*rest[OPEN_MAX];
 
 	if (fd < 0 || fd > OPEN_MAX || !line)
 		return (-1);
 	rest[fd] = start_line(rest[fd]);
-	while (!(ft_strchr(rest[fd], '\n')) && ((ret = read(fd, buf, BUFF_SIZE)) > 0))
+	while (!(ft_strchr(rest[fd], '\n'))
+			&& ((ret = read(fd, buf, BUFF_SIZE)) > 0))
 	{
 		buf[ret] = '\0';
 		rest[fd] = ft_strjoin_free(rest[fd], buf, 1);
@@ -69,6 +69,7 @@ int		get_next_line(const int fd, char **line)
 		return (-1);
 	}
 	(*line) = ft_strsub(rest[fd], 0, len_line(rest[fd]));
+	ret = ft_strlen(rest[fd]);
 	rest[fd] = free_line(rest[fd]);
 	if (len_line(*line))
 		return (1);
