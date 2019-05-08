@@ -56,6 +56,7 @@ int		get_next_line(const int fd, char **line)
 
 	if (fd < 0 || fd > OPEN_MAX || !line)
 		return (-1);
+	ret = 0;
 	rest[fd] = start_line(rest[fd]);
 	while (!(ft_strchr(rest[fd], '\n'))
 			&& ((ret = read(fd, buf, BUFF_SIZE)) > 0))
