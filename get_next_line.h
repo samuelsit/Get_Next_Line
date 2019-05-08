@@ -15,8 +15,8 @@
 
 # include <limits.h>
 # include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
+# include <sys/uio.h>
+# include <unistd.h>
 # define BUFF_SIZE 256
 
 int		get_next_line(const int fd, char **line);
