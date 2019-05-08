@@ -4,4 +4,4 @@ Make -C libft/
 
 gcc -o gnl libft/libft.a get_next_line.c main.c
 
-./gnl <fichier a lire>
+./gnl fichier_a_lire
