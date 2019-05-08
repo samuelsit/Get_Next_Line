@@ -1,12 +1,15 @@
 #include "get_next_line.h"
-#include "libft/libft.h" 
-int main(int argc, char **argv)
-{
-	int		fd;
-	char	*line;
-	int i = 1;
-	int ret = 1;
+#include <fcntl.h>
 
+int	main(int argc, char **argv)
+{
+	int	fd;
+	char	*line;
+	int	i;
+	int	ret;
+
+	i = 1;
+	ret = 1;
 	if (argc > 2)
 	{
 		ft_putstr("Too many arguments.\n");
